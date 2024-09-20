@@ -1,0 +1,229 @@
+body, article, h1, h2, h3, h4, h5, h6, textarea, input, select, .topbar, .main-menu, .breadcrumb, .copyrights-area, form span.required {
+    font-family: 'SolaimanLipi', Arial, sans-serif !important;
+}
+/* Verified Banner Styling */
+.verified-banner {
+    display: none; /* Hidden by default, shown by JavaScript */
+    position: fixed;
+    bottom: 10px; /* Closer to the bottom */
+    right: 10px; /* Closer to the right edge */
+    background-color: #5e255e; /* Background color for the banner */
+    color: white;
+    padding: 5px 10px; /* Reduced padding */
+    text-align: center;
+    z-index: 1000; /* Ensure it is above other content */
+    border-radius: 8px; /* Slightly smaller border radius */
+    animation: bump 1s ease-out;
+}
+
+.verified-icon {
+    vertical-align: middle;
+    margin-right: 5px; /* Reduced margin */
+    width: 12px; /* Smaller icon size */
+    height: 12px; /* Smaller icon size */
+}
+
+.verified-text {
+    font-size: 12px; /* Smaller font size */
+    font-weight: bold;
+}
+
+/* Bump animation */
+@keyframes bump {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); /* Slightly smaller bump */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
+ /* Set the icon size to match the paragraph text */
+ .icon-img-small {
+    height: 1em; /* Match the icon's height to the text size */
+    width: auto; /* Maintain the aspect ratio */
+    vertical-align: middle; /* Align the icon with the middle of the text */
+    margin-left: 5px; /* Optional: Add some space between the text and the icon */
+}
+
+
+.feedback-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow: hidden;
+    position: relative;
+    height: 160px; /* Adjust based on the number of visible items */
+}
+
+.feedback-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.6s ease-in-out;
+    position: absolute;
+    width: 100%;
+}
+
+.feedback-item.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.feedback-item.move-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.feedback-item p {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.feedback-item p:nth-child(2) {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+/*! elementor - v3.21.0 - 26-05-2024 */
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap {
+    background-color: #69727d;
+    color: #fff;
+}
+
+.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap {
+    color: #69727d;
+    border: 3px solid;
+    background-color: transparent;
+}
+
+.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap {
+    margin-top: 8px;
+}
+
+.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap-letter {
+    width: 1em;
+    height: 1em;
+}
+
+.elementor-widget-text-editor .elementor-drop-cap {
+    float: left;
+    text-align: center;
+    line-height: 1;
+    font-size: 50px;
+}
+
+.elementor-widget-text-editor .elementor-drop-cap-letter {
+    display: inline-block;
+}
+
+
+
+/*! elementor - v3.21.0 - 26-05-2024 */
+.elementor-heading-title {
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+}
+
+.elementor-widget-heading .elementor-heading-title[class*=elementor-size-] > a {
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.elementor-widget-heading .elementor-heading-title.elementor-size-small {
+    font-size: 15px;
+}
+
+.elementor-widget-heading .elementor-heading-title.elementor-size-medium {
+    font-size: 19px;
+}
+
+.elementor-widget-heading .elementor-heading-title.elementor-size-large {
+    font-size: 29px;
+}
+
+.elementor-widget-heading .elementor-heading-title.elementor-size-xl {
+    font-size: 39px;
+}
+
+.elementor-widget-heading .elementor-heading-title.elementor-size-xxl {
+    font-size: 59px;
+}
+
+
+:root {
+    --wpforms-field-border-radius: 3px;
+    --wpforms-field-border-style: solid;
+    --wpforms-field-border-size: 1px;
+    --wpforms-field-background-color: #ffffff;
+    --wpforms-field-border-color: rgba(0, 0, 0, 0.25);
+    --wpforms-field-border-color-spare: rgba(0, 0, 0, 0.25);
+    --wpforms-field-text-color: rgba(0, 0, 0, 0.7);
+    --wpforms-field-menu-color: #ffffff;
+    --wpforms-label-color: rgba(0, 0, 0, 0.85);
+    --wpforms-label-sublabel-color: rgba(0, 0, 0, 0.55);
+    --wpforms-label-error-color: #d63637;
+    --wpforms-button-border-radius: 3px;
+    --wpforms-button-border-style: none;
+    --wpforms-button-border-size: 1px;
+    --wpforms-button-background-color: #066aab;
+    --wpforms-button-border-color: #066aab;
+    --wpforms-button-text-color: #ffffff;
+    --wpforms-page-break-color: #066aab;
+    --wpforms-background-image: none;
+    --wpforms-background-position: center center;
+    --wpforms-background-repeat: no-repeat;
+    --wpforms-background-size: cover;
+    --wpforms-background-width: 100px;
+    --wpforms-background-height: 100px;
+    --wpforms-background-color: rgba(0, 0, 0, 0);
+    --wpforms-background-url: none;
+    --wpforms-container-padding: 0px;
+    --wpforms-container-border-style: none;
+    --wpforms-container-border-width: 1px;
+    --wpforms-container-border-color: #000000;
+    --wpforms-container-border-radius: 3px;
+    --wpforms-field-size-input-height: 43px;
+    --wpforms-field-size-input-spacing: 15px;
+    --wpforms-field-size-font-size: 16px;
+    --wpforms-field-size-line-height: 19px;
+    --wpforms-field-size-padding-h: 14px;
+    --wpforms-field-size-checkbox-size: 16px;
+    --wpforms-field-size-sublabel-spacing: 5px;
+    --wpforms-field-size-icon-size: 1;
+    --wpforms-label-size-font-size: 16px;
+    --wpforms-label-size-line-height: 19px;
+    --wpforms-label-size-sublabel-font-size: 14px;
+    --wpforms-label-size-sublabel-line-height: 17px;
+    --wpforms-button-size-font-size: 17px;
+    --wpforms-button-size-height: 41px;
+    --wpforms-button-size-padding-h: 15px;
+    --wpforms-button-size-margin-top: 10px;
+    --wpforms-container-shadow-size-box-shadow: none;
+}
+
+
+/*! elementor - v3.21.0 - 26-05-2024 */
+.elementor-widget-image {
+    text-align: center;
+}
+.elementor-widget-image a {
+    display: inline-block;
+}
+.elementor-widget-image a img[src$=".svg"] {
+    width: 48px;
+}
+.elementor-widget-image img {
+    vertical-align: middle;
+    display: inline-block;
+}
