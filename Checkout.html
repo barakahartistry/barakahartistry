@@ -63,7 +63,7 @@
             background-color: #138496;
         }
 
-        .success-message, .invoice {
+        .success-message {
             display: none;
             padding: 15px;
             margin-top: 20px;
@@ -76,27 +76,6 @@
 
         .payment-method {
             margin-top: 20px;
-        }
-
-        .invoice {
-            background-color: #f5f5f5;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        .invoice table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .invoice table th, .invoice table td {
-            padding: 8px;
-            text-align: left;
-            border: 1px solid #ddd;
-        }
-
-        .invoice-header {
-            margin-bottom: 20px;
         }
     </style>
     <meta charset="UTF-8">
@@ -173,34 +152,6 @@
         <div id="successMessage" class="success-message">
             <span>✅ Order placed successfully!</span>
         </div>
-
-        <div id="invoice" class="invoice">
-            <h3>Invoice</h3>
-            <div class="invoice-header">
-                <p><strong>Name:</strong> <span id="invoiceName"></span></p>
-                <p><strong>Address:</strong> <span id="invoiceAddress"></span></p>
-                <p><strong>Phone:</strong> <span id="invoicePhone"></span></p>
-                <p><strong>Order Date:</strong> <span id="invoiceDate"></span></p>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product Code</th>
-                        <th>Quantity</th>
-                        <th>Delivery Method</th>
-                        <th>Total Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td id="invoiceProductCode"></td>
-                        <td id="invoiceQuantity"></td>
-                        <td id="invoiceDeliveryMethod"></td>
-                        <td id="invoiceTotalAmount"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
 
     <!-- Include EmailJS SDK -->
@@ -225,51 +176,29 @@
         });
 
         document.getElementById('orderForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+            event.preventDefault(); // Prevent the default form submission
 
-            const name = document.getElementById('name').value;
-            const address = document.getElementById('address').value;
-            const phone = document.getElementById('phone').value;
-            const productCode = document.getElementById('productCode').value;
-            const quantity = document.getElementById('quantity').value;
-            const deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked').value;
-            const totalAmount = document.getElementById('totalAmount').innerText;
-
-            // Success message display
-            document.getElementById('successMessage').style.display = 'block';
-
-            // Fill the invoice details
-            document.getElementById('invoiceName').innerText = name;
-            document.getElementById('invoiceAddress').innerText = address;
-            document.getElementById('invoicePhone').innerText = phone;
-            document.getElementById('invoiceProductCode').innerText = productCode;
-            document.getElementById('invoiceQuantity').innerText = quantity;
-            document.getElementById('invoiceDeliveryMethod').innerText = deliveryMethod === 'inDhaka' ? 'In Dhaka' : 'Out of Dhaka';
-            document.getElementById('invoiceTotalAmount').innerText = totalAmount;
-
-            // Set current date in invoice
-            const currentDate = new Date().toLocaleDateString();
-            document.getElementById('invoiceDate').innerText = currentDate;
-
-            // Display invoice
-            document.getElementById('invoice').style.display = 'block';
-
-            // Send email using EmailJS
-            const emailParams = {
-                name: name,
-                address: address,
-                phone: phone,
-                productCode: productCode,
-                quantity: quantity,
-                deliveryMethod: deliveryMethod,
-                totalAmount: totalAmount
+            const templateParams = {
+                name: document.getElementById('name').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                district: document.getElementById('district').value,
+                phone: document.getElementById('phone').value,
+                product_code: document.getElementById('productCode').value,
+                quantity: document.getElementById('quantity').value,
+                delivery_method: document.querySelector('input[name="deliveryMethod"]:checked').value,
+                total_amount: document.getElementById('totalAmount').innerText,
+                order_date: new Date().toLocaleString(), // Order date and time
+                to_email: "creativewebexperts02@gmail.com" // Your email address
             };
 
-            emailjs.send("service_9zc5hzt", "template_oaqjkad", emailParams)
+            emailjs.send('service_9zc5hzt', 'template_rwv3v8n', templateParams)
                 .then(function(response) {
-                    console.log('Email sent successfully!', response.status, response.text);
+                    document.getElementById('successMessage').style.display = 'block'; // Show success message
+                    document.getElementById('totalAmount').style.display = 'none'; // Hide total amount
+                    document.getElementById('orderForm').reset(); // Reset the form
                 }, function(error) {
-                    console.log('Failed to send email...', error);
+                    console.error('Error sending email:', error);
                 });
         });
     </script>
