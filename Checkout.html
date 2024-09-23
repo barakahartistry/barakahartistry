@@ -84,7 +84,7 @@
 <script>
     // Initialize EmailJS with your user ID
     (function() {
-        emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+        emailjs.init("klRt3QA66VCjst9u6"); // Your EmailJS public key
     })();
 
     document.getElementById('orderForm').addEventListener('submit', function(event) {
@@ -101,7 +101,7 @@
             to_email: "creativewebexperts02@gmail.com" // Your email address
         };
 
-        emailjs.send('service_9zc5hzt', 'template_oaqjkad', templateParams) // Use your EmailJS service ID and template ID
+        emailjs.send('service_9zc5hzt', 'template_oaqjkad', templateParams)
             .then(function(response) {
                 alert('Order placed successfully!');
                 document.getElementById('orderForm').reset(); // Reset the form
