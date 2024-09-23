@@ -5,7 +5,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #43a0bc, #1b3c74); /* Example gradient colors */
+            background: linear-gradient(to right, #43a0bc, #1b3c74);
         }
 
         p {
@@ -22,7 +22,7 @@
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: rgba(249, 249, 249, 0.9); /* Semi-transparent background for form */
+            background-color: rgba(249, 249, 249, 0.9);
         }
 
         h2 {
@@ -89,8 +89,6 @@
         
         <h2 style="text-align: center;"> ডেলিভারি এড্রেস</h2>
         
-
-       
         <form id="orderForm">
             <div class="form-group">
                 <label for="name">Name*</label>
@@ -134,7 +132,6 @@
                 <input type="number" id="quantity" name="quantity" min="1" placeholder="Enter quantity" required>
             </div>
 
-            <!-- Delivery Charge Section -->
             <div class="form-group">
                 <label><b>Delivery Method - Cash On Delivery</b></label>
                 <label for="inDhaka">
@@ -159,18 +156,16 @@
             
         </form>
 
-        <!-- Success message -->
         <div id="successMessage" class="success-message">
             <span>✅ Order placed successfully!</span>
         </div>
     </div>
 
     <!-- Include EmailJS SDK -->
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        // Initialize EmailJS with your public key
-        (function() {
-            emailjs.init("klRt3QA66VCjst9u6"); // Your EmailJS public key
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("EI64LNuOhELsTFjbW"); // Your EmailJS public key
         })();
 
         function calculateTotal() {
@@ -199,22 +194,19 @@
                 quantity: document.getElementById('quantity').value,
                 delivery_method: document.querySelector('input[name="deliveryMethod"]:checked').value,
                 total_amount: document.getElementById('totalAmount').innerText,
+                order_date: new Date().toLocaleString(), // Order date and time
                 to_email: "creativewebexperts02@gmail.com" // Your email address
             };
 
-            emailjs.send('service_9zc5hzt', 'template_oaqjkad', templateParams)
+            emailjs.send('service_9zc5hzt', 'template_rwv3v8n', templateParams)
                 .then(function(response) {
                     document.getElementById('successMessage').style.display = 'block'; // Show success message
                     document.getElementById('orderForm').reset(); // Reset the form
                     document.getElementById('totalAmount').innerText = 'Total: 0 ৳'; // Reset total amount
                 }, function(error) {
                     console.error('Error sending email:', error);
-                    alert('Failed to send order. Please try again later.');
                 });
         });
-
-        // Initial calculation
-        calculateTotal();
     </script>
 </body>
 </html>
