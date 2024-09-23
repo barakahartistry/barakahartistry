@@ -40,6 +40,16 @@
         button:hover {
             background-color: #218838;
         }
+        .success-message {
+            display: none; /* Initially hidden */
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -77,12 +87,17 @@
         </div>
         <button type="submit">Place Order</button>
     </form>
+
+    <!-- Success message -->
+    <div id="successMessage" class="success-message">
+        <span>✅ Order placed successfully!</span>
+    </div>
 </div>
 
 <!-- Include EmailJS SDK -->
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-    // Initialize EmailJS with your user ID
+    // Initialize EmailJS with your public key
     (function() {
         emailjs.init("klRt3QA66VCjst9u6"); // Your EmailJS public key
     })();
@@ -103,10 +118,11 @@
 
         emailjs.send('service_9zc5hzt', 'template_oaqjkad', templateParams)
             .then(function(response) {
-                alert('Order placed successfully!');
+                document.getElementById('successMessage').style.display = 'block'; // Show success message
                 document.getElementById('orderForm').reset(); // Reset the form
             }, function(error) {
-                alert('Error sending email: ' + JSON.stringify(error));
+                console.error('Error sending email:', error);
+                alert('Failed to send order. Please try again later.');
             });
     });
 </script>
