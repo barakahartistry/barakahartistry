@@ -201,8 +201,8 @@
             emailjs.send('service_9zc5hzt', 'template_rwv3v8n', templateParams)
                 .then(function(response) {
                     document.getElementById('successMessage').style.display = 'block'; // Show success message
+                    document.getElementById('totalAmount').style.display = 'none'; // Hide total amount
                     document.getElementById('orderForm').reset(); // Reset the form
-                    document.getElementById('totalAmount').innerText = ''; // Reset total amount
                 }, function(error) {
                     console.error('Error sending email:', error);
                 });
