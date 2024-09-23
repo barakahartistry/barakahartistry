@@ -87,7 +87,7 @@
     <div class="checkout-form">
         <img src="Barakah_header_logo.png" alt="Product Image" style="display: block; margin: 0 auto; max-width: 70%; height: auto;">
         
-        <h2 style="text-align: center;"> ডেলিভারি এড্রেস</h2>
+        <h2 style="text-align: center;">ডেলিভারি এড্রেস</h2>
         
         <form id="orderForm">
             <div class="form-group">
@@ -116,6 +116,34 @@
                     <option value="Rangpur">Rangpur</option>
                     <option value="Comilla">Comilla</option>
                     <option value="Jessore">Jessore</option>
+                    <option value="Narayanganj">Narayanganj</option>
+                    <option value="Brahmanbaria">Brahmanbaria</option>
+                    <option value="Narsingdi">Narsingdi</option>
+                    <option value="Netrokona">Netrokona</option>
+                    <option value="Sherpur">Sherpur</option>
+                    <option value="Chandpur">Chandpur</option>
+                    <option value="Cumilla">Cumilla</option>
+                    <option value="Faridpur">Faridpur</option>
+                    <option value="Gazipur">Gazipur</option>
+                    <option value="Jamalkhan">Jamalkhan</option>
+                    <option value="Khulna">Khulna</option>
+                    <option value="Lalmonirhat">Lalmonirhat</option>
+                    <option value="Manikganj">Manikganj</option>
+                    <option value="Naogaon">Naogaon</option>
+                    <option value="Natore">Natore</option>
+                    <option value="Netrakona">Netrakona</option>
+                    <option value="Nilphamari">Nilphamari</option>
+                    <option value="Pabna">Pabna</option>
+                    <option value="Panchagarh">Panchagarh</option>
+                    <option value="Patuakhali">Patuakhali</option>
+                    <option value="Pirojpur">Pirojpur</option>
+                    <option value="Rajbari">Rajbari</option>
+                    <option value="Rangamati">Rangamati</option>
+                    <option value="Satkhira">Satkhira</option>
+                    <option value="Shariatpur">Shariatpur</option>
+                    <option value="Sherpur">Sherpur</option>
+                    <option value="Sunamganj">Sunamganj</option>
+                    <option value="Thakurgaon">Thakurgaon</option>
                 </select>
             </div>
             <div class="form-group">
@@ -124,7 +152,7 @@
             </div>
             <div class="form-group">
                 <label for="productCode">Product Code*</label>
-                <input type="text" id="productCode" name="productCode" value="Product Code 701 - Price 790 ৳ " readonly 
+                <input type="text" id="productCode" name="productCode" value="Product Code 701" readonly 
                        style="border: 1px solid #ccc; background-color: #f9f9f9; font-weight: bold; padding: 8px; width: 100%; cursor: not-allowed;">
             </div>
             <div class="form-group">
@@ -153,7 +181,6 @@
             </div>
 
             <button type="submit">অর্ডার কনফার্ম করুন <div class="total-amount" id="totalAmount">  790 ৳</div></button>
-            
         </form>
 
         <div id="successMessage" class="success-message">
@@ -171,41 +198,38 @@
         function calculateTotal() {
             const quantity = parseInt(document.getElementById('quantity').value) || 1;
             const deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked').value;
-            const productPrice = 790;
-            let deliveryCharge = deliveryMethod === 'inDhaka' ? 60 : 80;
-            const totalAmount = (productPrice + deliveryCharge) * quantity;
-            document.getElementById('totalAmount').innerText = `Total: ${totalAmount} ৳`;
+            const deliveryCharge = deliveryMethod === 'inDhaka' ? 60 : 80;
+            const totalAmount = (quantity * 790) + deliveryCharge; // Assume 790 ৳ is the product price
+            document.getElementById('totalAmount').textContent = ` ${totalAmount} ৳`;
         }
 
         document.getElementById('quantity').addEventListener('input', calculateTotal);
-        document.querySelectorAll('input[name="deliveryMethod"]').forEach(input => {
-            input.addEventListener('change', calculateTotal);
+        document.querySelectorAll('input[name="deliveryMethod"]').forEach(radio => {
+            radio.addEventListener('change', calculateTotal);
         });
 
         document.getElementById('orderForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            const templateParams = {
+            event.preventDefault();
+            
+            const orderDetails = {
                 name: document.getElementById('name').value,
                 address: document.getElementById('address').value,
                 city: document.getElementById('city').value,
                 district: document.getElementById('district').value,
                 phone: document.getElementById('phone').value,
-                Product Code: {{product_code_701}}
+                productCode: document.getElementById('productCode').value,
                 quantity: document.getElementById('quantity').value,
-                delivery_method: document.querySelector('input[name="deliveryMethod"]:checked').value,
-                total_amount: document.getElementById('totalAmount').innerText,
-                order_date: new Date().toLocaleString(), // Order date and time
-                to_email: "creativewebexperts02@gmail.com" // Your email address
+                deliveryMethod: document.querySelector('input[name="deliveryMethod"]:checked').value,
+                totalAmount: document.getElementById('totalAmount').textContent.trim()
             };
 
-            emailjs.send('service_9zc5hzt', 'template_rwv3v8n', templateParams)
+            emailjs.send("service_9zc5hzt", "template_oaqjkad", orderDetails)
                 .then(function(response) {
-                    document.getElementById('successMessage').style.display = 'block'; // Show success message
-                    document.getElementById('totalAmount').style.display = 'none'; // Hide total amount
-                    document.getElementById('orderForm').reset(); // Reset the form
+                    console.log('SUCCESS!', response.status, response.text);
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('orderForm').reset();
                 }, function(error) {
-                    console.error('Error sending email:', error);
+                    console.log('FAILED...', error);
                 });
         });
     </script>
