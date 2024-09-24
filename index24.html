@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+
+
 <html lang="en">
 <head>
     <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
@@ -12,10 +15,10 @@
         }
 
         .checkout-form {
-            max-width: 600px;
+            max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            border: 1px solid #ccc;
+            border: 1px solid #bebebe;
             border-radius: 5px;
             background-color: rgba(249, 249, 249, 0.9);
         }
@@ -25,7 +28,7 @@
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
 
         label {
@@ -60,7 +63,7 @@
             border-radius: 5px;
             cursor: pointer;
             display: block;
-            margin: 0 auto;
+            margin: 20px auto 0; /* Added margin at the top */
             text-align: center;
         }
 
@@ -84,6 +87,19 @@
             font-weight: bold;
             text-align: center;
         }
+
+        .delivery-methods {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .terms {
+            font-size: 11px;
+            color: #666;
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,67 +108,88 @@
 <body>
 
     <div class="checkout-form">
-        <img src="Barakah_header_logo.png" alt="Product Image" style="display: block; margin: 0 auto; max-width: 70%; height: auto;">
+        <img src="Barakah_header_logo.png" alt="Product Image" style="display: block; margin: 0 auto; max-width: 25%; height: auto;">
 
-        <h2 style="text-align: center;"> ডেলিভারি এড্রেস</h2>
+        <h2 style="text-align: center;">ডেলিভারি এড্রেস</h2>
 
         <form id="orderForm">
-            <div class="form-group">
-                <label for="name">Name*</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
-            </div>
-            <div class="form-group">
-                <label for="address">Address*</label>
-                <input type="text" id="address" name="address" placeholder="Enter your address" required>
-            </div>
-            <div class="form-group">
-                <label for="thana">Thana*</label>
-                <input type="text" id="thana" name="thana" placeholder="Enter your thana" required>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone Number*</label>
-                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required pattern="[0-9]{11}" title="Phone number must be 11 digits">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone*</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required pattern="[0-9]{11}" title="Phone number must be 11 digits">
+                </div>
+ 
             </div>
 
-            <div class="form-group">
-                <label for="productCode">Product Code*</label>
-                <select id="productCode" name="productCode" required>
-                    <option value="701">Product 701 (1 Minute Zikr & Hadith) - 790 ৳</option>
-                    <option value="702">Product 702 (Allahu & Muhammad SAW) - 790 ৳</option>
-                    <option value="703">Product 703 (Khana Kaba & 2 Ayaat) - 790 ৳</option>
-                    <option value="704">Product 704 (Makka, Madina, Aksa) - 790 ৳</option>
-                    <option value="705">Product 705 (Arabic Typograpy) - 790 ৳</option>
-                </select>
+
+
+
+
+
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="address">Address*</label>
+                    <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                </div>
+                <div class="form-group">
+                    <label for="thana">Thana*</label>
+                    <input type="text" id="thana" name="thana" placeholder="Enter your thana" required> </div>
+ 
             </div>
 
-            <div class="form-group">
-                <label for="quantity">Quantity of Set*</label>
-                <input type="number" id="quantity" name="quantity" min="1" placeholder="Enter quantity" required>
-            </div>
 
-            <div class="form-group">
-                <label><b>Delivery Method - Cash On Delivery</b></label>
-                <label for="inDhaka">
-                    <input type="radio" id="inDhaka" name="deliveryMethod" value="inDhaka" checked>
-                    In Dhaka (Delivery Charge: 60 ৳)
-                </label>
-                <label for="outDhaka">
-                    <input type="radio" id="outDhaka" name="deliveryMethod" value="outDhaka">
-                    Out of Dhaka (Delivery Charge: 80 ৳)
-                </label>
-            </div>
-            <h4 style="text-align: center;">অনুগ্রহপূর্বক প্রোডাক্ট কোড দেখে অর্ডার কনফার্ম করুন</h4>
-            <div class="woocommerce-terms-and-conditions-wrapper" style="font-size: 11px; color: #666;">
-                <div class="woocommerce-privacy-policy-text">
-                    <p>Your personal data will be used to process your order, support your experience throughout this website,
-                        and for other purposes described in our privacy policy.
-                    </p>
+
+
+
+ 
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="productCode">Product Code*</label>
+                    <select id="productCode" name="productCode" required>
+                        <option value="701">Product 701 - (1 Minute Zikr & Hadith) - 790 ৳</option>
+                        <option value="702">Product 702 - (Allahu & Muhammad SAW) - 790 ৳</option>
+                        <option value="703">Product 703 - (Khana Kaba & 2 Ayaat) - 790 ৳</option>
+                        <option value="704">Product 704 - (Makka, Madina, Aksa) - 790 ৳</option>
+                        <option value="705">Product 705 - (Arabic Typograpy) - 790 ৳</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity of Set*</label>
+                    <input type="number" id="quantity" name="quantity" min="1" placeholder="Enter quantity" required>
                 </div>
             </div>
+    
 
-            <button type="submit">অর্ডার কনফার্ম করুন <span class="total-amount" id="totalAmount">- Total: 790 ৳</span></button>
-            
+
+            <div class="delivery-methods">
+                <div class="form-group">
+                    <label><b>Delivery Method</b></label>
+                    <label for="inDhaka">
+                        <input type="radio" id="inDhaka" name="deliveryMethod" value="inDhaka" checked>
+                        In Dhaka (Delivery Charge: 60 ৳)
+                    </label>
+                    <label for="outDhaka">
+                        <input type="radio" id="outDhaka" name="deliveryMethod" value="outDhaka">
+                        Out of Dhaka (Delivery Charge: 80 ৳)
+                    </label>
+                </div>
+            </div>
+ 
+
+
+            <h4 style="text-align: center;">অনুগ্রহপূর্বক প্রোডাক্ট কোড দেখে অর্ডার কনফার্ম করুন</h4>
+
+            <div class="terms">
+                <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.</p>
+            </div>
+
+            <button type="submit">অর্ডার কনফার্ম করুন <span class="total-amount" id="totalAmount">- Total: 850 ৳</span></button>
         </form>
 
         <div id="successMessage" class="success-message">
@@ -210,4 +247,3 @@
 
 </body>
 </html>
-    
