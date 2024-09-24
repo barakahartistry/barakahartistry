@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - Barakah Artistry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .invoice-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .invoice-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .invoice-details {
+            margin-bottom: 20px;
+        }
+        .invoice-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="invoice-container">
+    <div class="invoice-header">
+        <h1>Invoice</h1>
+        <p><strong>Barakah Artistry</strong></p>
+    </div>
+
+    <div class="invoice-details">
+        <p><strong>Order Date:</strong> <span id="orderDate"></span></p>
+        <p><strong>Name:</strong> <span id="name"></span></p>
+        <p><strong>Address:</strong> <span id="address"></span></p>
+        <p><strong>Thana:</strong> <span id="thana"></span></p>
+        <p><strong>Phone:</strong> <span id="phone"></span></p>
+        <p><strong>Product Code:</strong> <span id="productCode"></span></p>
+        <p><strong>Quantity:</strong> <span id="quantity"></span></p>
+        <p><strong>Delivery Method:</strong> <span id="deliveryMethod"></span></p>
+        <p><strong>Total Amount:</strong> <span id="totalAmount"></span></p>
+    </div>
+
+    <div class="invoice-footer">
+        <p>Thank you for shopping with Barakah Artistry!</p>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // Retrieve order details from sessionStorage
+    const invoiceData = JSON.parse(sessionStorage.getItem('invoiceData'));
+
+    if (invoiceData) {
+        document.getElementById('orderDate').innerText = invoiceData.order_date;
+        document.getElementById('name').innerText = invoiceData.name;
+        document.getElementById('address').innerText = invoiceData.address;
+        document.getElementById('thana').innerText = invoiceData.thana;
+        document.getElementById('phone').innerText = invoiceData.phone;
+        document.getElementById('productCode').innerText = invoiceData.product_code;
+        document.getElementById('quantity').innerText = invoiceData.quantity;
+        document.getElementById('deliveryMethod').innerText = invoiceData.delivery_method === 'inDhaka' ? 'In Dhaka' : 'Out of Dhaka';
+        document.getElementById('totalAmount').innerText = invoiceData.total_amount;
+    } else {
+        document.body.innerHTML = "<h1>Invalid Invoice</h1>";
+    }
+</script>
+
+</body>
+</html>
