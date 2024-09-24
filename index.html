@@ -753,7 +753,7 @@ body{ font-family: AdorshoLipi, arial, sans-serif !important; }
 
 <br><br> 
 
-          
+<br>     
 
 
 
@@ -1004,11 +1004,17 @@ body{ font-family: AdorshoLipi, arial, sans-serif !important; }
                 to_email: "creativewebexperts02@gmail.com" // Your email address
             };
 
+
+            // Send email with EmailJS
             emailjs.send('service_9zc5hzt', 'template_rwv3v8n', templateParams)
                 .then(function(response) {
-                    document.getElementById('successMessage').style.display = 'block'; // Show success message
-                    document.getElementById('totalAmount').scrollIntoView(); // Scroll to the success message
                     console.log('Email sent successfully!', response.status, response.text);
+
+                    // Store the order details in session storage to pass to the invoice page
+                    sessionStorage.setItem('invoiceData', JSON.stringify(templateParams));
+
+                    // Redirect to the invoice page
+                    window.location.href = 'invoice.html';
                 }, function(error) {
                     console.error('Failed to send email:', error);
                 });
