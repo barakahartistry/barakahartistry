@@ -777,7 +777,6 @@
    <br>     
    
    
-   
    <head>
     <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
     <meta charset="UTF-8">
@@ -879,10 +878,14 @@
             margin-top: 20px;
         }
 
+        .quantity-container {
+            text-align: center; /* Center content */
+        }
+
         .input-size {
             width: 60px; /* Adjust width as needed */
             height: 30px; /* Adjust height as needed */
-            margin-right: 10px; /* Space between input and buttons */
+            margin-bottom: 5px; /* Space between input and buttons */
         }
 
         .button {
@@ -892,6 +895,7 @@
             border: 1px solid #ccc; /* Border style */
             background-color: #f0f0f0; /* Background color */
             text-align: center; /* Center text in button */
+            display: inline-block; /* Align buttons horizontally */
         }
     </style>
 </head>
@@ -935,7 +939,7 @@
             </div>
 
             <div class="form-row">
-                <div class="form-group">
+                <div class="form-group quantity-container">
                     <label for="quantity">Quantity of Set*</label>
                     <input type="number" id="quantity" name="quantity" min="1" value="1" required class="input-size" onchange="calculateTotal()">
                     <div class="button" onclick="decrement()">-</div>
@@ -992,35 +996,40 @@
 
             // Calculate total amount
             const totalAmount = (productPrice * quantity) + deliveryCharge;
-            document.getElementById('totalAmount').innerText = `${totalAmount} ৳`;
+            document.getElementById('totalAmount').innerText = totalAmount + ' ৳';
         }
 
         function increment() {
             const quantityInput = document.getElementById('quantity');
             quantityInput.value = parseInt(quantityInput.value) + 1;
-            calculateTotal();
+            calculateTotal(); // Update total after increment
         }
 
         function decrement() {
             const quantityInput = document.getElementById('quantity');
-            if (quantityInput.value > 1) {
+            if (parseInt(quantityInput.value) > 1) {
                 quantityInput.value = parseInt(quantityInput.value) - 1;
-                calculateTotal();
+                calculateTotal(); // Update total after decrement
             }
         }
 
-        document.getElementById("orderForm").onsubmit = function (event) {
-            event.preventDefault(); // Prevent form submission
-            document.getElementById("successMessage").style.display = "block"; // Show success message
-            // Reset the form
-            this.reset();
-            calculateTotal(); // Reset the total amount to default
-        };
+        // Form submission
+        document.getElementById('orderForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
 
-        // Initialize total amount on page load
-        window.onload = calculateTotal;
+            const formData = new FormData(this); // Create FormData object
+            // Send the form data to EmailJS
+            emailjs.sendForm('service_9zc5hzt', 'template_oaqjkad', formData)
+                .then(function () {
+                    document.getElementById('successMessage').style.display = 'block'; // Show success message
+                    document.getElementById('orderForm').reset(); // Reset the form
+                }, function (error) {
+                    console.error('Failed to send order:', error);
+                });
+        });
     </script>
 </body>
+
 
    
    
