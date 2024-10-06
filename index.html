@@ -120,69 +120,7 @@
             /* Adjust the value as needed */
        }
    </style>
-   
-               
-   <!-- Verified Banner -->
-   <div id="verified-banner" class="verified-banner">
-       <span class="verified-text">বারাকাহ্ আর্টিস্ট্রি <img src="tick.png" class="verified-icon" alt="Verified Icon">Verified by Google</span>
-   </div>
-   
-   
-   
-   <style>
-     /* Verified Banner Styling */
-   .verified-banner {
-       display: none; /* Hidden by default, shown by JavaScript */
-       position: fixed;
-       bottom: 10px; /* Closer to the bottom */
-       right: 10px; /* Closer to the right edge */
-       background-color: #5e255e; /* Background color for the banner */
-       color: white;
-       padding: 5px 10px; /* Reduced padding */
-       text-align: center;
-       z-index: 1000; /* Ensure it is above other content */
-       border-radius: 8px; /* Slightly smaller border radius */
-       animation: bump 1s ease-out;
-   }
-   
-   .verified-icon {
-       vertical-align: middle;
-       margin-right: 5px; /* Reduced margin */
-       width: 12px; /* Smaller icon size */
-       height: 12px; /* Smaller icon size */
-   }
-   
-   .verified-text {
-       font-size: 12px; /* Smaller font size */
-       font-weight: bold;
-   }
-   
-   /* Bump animation */
-   @keyframes bump {
-       0% {
-           transform: scale(1);
-       }
-       50% {
-           transform: scale(1.1); /* Slightly smaller bump */
-       }
-       100% {
-           transform: scale(1);
-       }
-   }
-   
-   </style>
-   <script>
-       document.addEventListener('DOMContentLoaded', function() {
-           var banner = document.getElementById('verified-banner');
-           banner.style.display = 'block';
-           
-           // Hide the banner after the animation (1s) plus an additional time (4s)
-           setTimeout(function() {
-               banner.style.display = 'none';
-           }, 5000); // 1s animation + 4s display time
-       });
-   </script>
-   
+    
    
    
    
@@ -373,10 +311,7 @@
    
     
    
-   <br>
-   <h3 class="elementor-heading-title elementor-size-default" style="text-align: center;">
-       শিল্প যা কথা বলে, ক্যানভাস যা অনুপ্রেরণা দেয়
-   </h3>
+   
    
    
    
@@ -714,7 +649,10 @@
    </span>
    <a class="elementor-toggle-title" tabindex="0">ক্যানভাসের সাইজ কত?</a></div><div id="elementor-tab-content-2258" class="elementor-tab-content elementor-clearfix" data-tab="8" role="region" aria-labelledby="elementor-tab-title-2258"><p>সাইজ: তিন পিস একসাথে <strong>৩০ x ১৪</strong> ইঞ্চি হয়। প্রত্যেকটি ক্যানভাস <strong>১৪ * ১০</strong> ইঞ্চি করে ।</p></div></div></div></div></div></div></div></div></div>
    
-   <br><br> 
+   <br><br>
+   <h3 class="elementor-heading-title elementor-size-default" style="text-align: center;">
+       শিল্প যা কথা বলে, ক্যানভাস যা অনুপ্রেরণা দেয়
+   </h3><br> 
    <div class="elementor-element elementor-element-47a8913b e-flex e-con-boxed e-con e-parent" data-id="47a8913b" data-element_type="container" id="jogajog" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"><div class="e-con-inner">
    <br>
    <br>
@@ -960,153 +898,140 @@
 
 
 
+<div class="checkout-form" id="cart">
+    <img src="Barakah_header_logo.png" alt="Product Image" style="display: block; margin: 0 auto; max-width: 25%; height: auto;">
 
+    <h2 style="text-align: center;">ডেলিভারি এড্রেস</h2>
 
-    <div class="checkout-form"  id="cart">
-        <img src="Barakah_header_logo.png" alt="Product Image" style="display: block; margin: 0 auto; max-width: 25%; height: auto;">
-
-        <h2 style="text-align: center;">ডেলিভারি এড্রেস</h2>
-
-        <form id="orderForm">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="name">Name*</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone*</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required pattern="[0-9]{11}" title="Phone number must be 11 digits">
-                </div>
- 
+    <form id="orderForm">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name">Name*</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
             </div>
-
-
-
-
-
-
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="address">Address*</label>
-                    <input type="text" id="address" name="address" placeholder="Enter your address" required>
-                </div>
-                <div class="form-group">
-                    <label for="thana">Thana*</label>
-                    <input type="text" id="thana" name="thana" placeholder="Enter your thana" required> </div>
- 
+            <div class="form-group">
+                <label for="phone">Phone*</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required pattern="[0-9]{11}" title="Phone number must be 11 digits">
             </div>
+        </div>
 
-
-
-
-
- 
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="productCode">Product Code*</label>
-                    <select id="productCode" name="productCode" required>
-                        <option value="701">Product 701 - (1 Minute Zikr & Hadith) - 790 ৳</option>
-                        <option value="702">Product 702 - (Allahu & Muhammad SAW) - 790 ৳</option>
-                        <option value="703">Product 703 - (Khana Kaba & 2 Ayaat) - 790 ৳</option>
-                        <option value="704">Product 704 - (Makka, Madina, Aksa) - 790 ৳</option>
-                        <option value="705">Product 705 - (Arabic Typograpy) - 790 ৳</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="quantity">Quantity of Set*</label>
-                    <input type="number" id="quantity" name="quantity" min="1" placeholder="Enter quantity" required>
-                </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="address">Address*</label>
+                <input type="text" id="address" name="address" placeholder="Enter your address" required>
             </div>
-    
-
-
-            <div class="delivery-methods">
-                <div class="form-group">
-                    <label><b>Delivery Method</b></label>
-                    <label for="inDhaka">
-                        <input type="radio" id="inDhaka" name="deliveryMethod" value="inDhaka" checked>
-                        In Dhaka (Delivery Charge: 60 ৳)
-                    </label>
-                    <label for="outDhaka">
-                        <input type="radio" id="outDhaka" name="deliveryMethod" value="outDhaka">
-                        Out of Dhaka (Delivery Charge: 80 ৳)
-                    </label>
-                </div>
+            <div class="form-group">
+                <label for="thana">Thana*</label>
+                <input type="text" id="thana" name="thana" placeholder="Enter your thana" required>
             </div>
- 
+        </div>
 
+        <div class="form-row">
+            <div class="form-group">
+                <label for="productCode">Product Code*</label>
+                <select id="productCode" name="productCode" required>
+                    <option value="701">Product 701 - (1 Minute Zikr & Hadith) - 790 ৳</option>
+                    <option value="702">Product 702 - (Allahu & Muhammad SAW) - 790 ৳</option>
+                    <option value="703">Product 703 - (Khana Kaba & 2 Ayaat) - 790 ৳</option>
+                    <option value="704">Product 704 - (Makka, Madina, Aksa) - 790 ৳</option>
+                    <option value="705">Product 705 - (Arabic Typography) - 790 ৳</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity of Set*</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1" placeholder="Enter quantity" required>
+            </div>
+        </div>
 
-            <h4 style="text-align: center;">অনুগ্রহপূর্বক প্রোডাক্ট কোড দেখে অর্ডার কনফার্ম করুন</h4>
+        <div class="delivery-methods">
+            <div class="form-group">
+                <label><b>Delivery Method</b></label>
+                <label for="inDhaka">
+                    <input type="radio" id="inDhaka" name="deliveryMethod" value="inDhaka" checked>
+                    In Dhaka (Delivery Charge: 60 ৳)
+                </label>
+                <label for="outDhaka">
+                    <input type="radio" id="outDhaka" name="deliveryMethod" value="outDhaka">
+                    Out of Dhaka (Delivery Charge: 80 ৳)
+                </label>
+            </div>
+        </div>
 
-            <div class="terms">
+        <h4 style="text-align: center;">অনুগ্রহপূর্বক প্রোডাক্ট কোড দেখে অর্ডার কনফার্ম করুন</h4>
+
+        <div class="terms">
             <p style="text-align: center; font-size: 10px; line-height: 1.5;">
-    Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.
-</p>
+                Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.
+            </p>
+        </div>
+
+        <button type="submit">অর্ডার কনফার্ম করুন <span class="total-amount" id="totalAmount">- Total: 850 ৳</span></button>
+    </form>
+
+    <div id="successMessage" class="success-message">
+        <span>✅ Order placed successfully!</span>
+    </div>
 </div>
 
-            <button type="submit">অর্ডার কনফার্ম করুন <span class="total-amount" id="totalAmount">- Total: 850 ৳</span></button>
-        </form>
+<!-- Include EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function(){
+        emailjs.init("EI64LNuOhELsTFjbW"); // Your EmailJS public key
+    })();
 
-        <div id="successMessage" class="success-message">
-            <span>✅ Order placed successfully!</span>
-        </div>
-    </div>
+    // Function to calculate the total amount
+    function calculateTotal() {
+        const productPrice = 790; // Fixed product price for all products
+        const quantity = parseInt(document.getElementById('quantity').value) || 1;
+        const deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked').value;
+        
+        let deliveryCharge = (deliveryMethod === 'inDhaka') ? 60 : 80;
+        const totalAmount = (productPrice * quantity) + deliveryCharge;
 
-    <!-- Include EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init("EI64LNuOhELsTFjbW"); // Your EmailJS public key
-        })();
+        // Update the total amount displayed
+        document.getElementById('totalAmount').innerText = `Total: ${totalAmount} ৳`;
+    }
 
-        function calculateTotal() {
-            const quantity = parseInt(document.getElementById('quantity').value) || 1;
-            const deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked').value;
-            const productPrice = 790;
-            let deliveryCharge = deliveryMethod === 'inDhaka' ? 60 : 80;
-            const totalAmount = (productPrice + deliveryCharge) * quantity;
-            document.getElementById('totalAmount').innerText = `Total: ${totalAmount} ৳`;
-        }
+    // Event listeners to trigger total amount calculation
+    document.getElementById('quantity').addEventListener('input', calculateTotal);
+    document.querySelectorAll('input[name="deliveryMethod"]').forEach(input => {
+        input.addEventListener('change', calculateTotal);
+    });
 
-        document.getElementById('quantity').addEventListener('input', calculateTotal);
-        document.querySelectorAll('input[name="deliveryMethod"]').forEach(input => {
-            input.addEventListener('change', calculateTotal);
-        });
+    // Form submission with EmailJS
+    document.getElementById('orderForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
 
-        document.getElementById('orderForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+        const templateParams = {
+            name: document.getElementById('name').value,
+            address: document.getElementById('address').value,
+            thana: document.getElementById('thana').value,
+            phone: document.getElementById('phone').value,
+            product_code: document.getElementById('productCode').value,
+            quantity: document.getElementById('quantity').value,
+            delivery_method: document.querySelector('input[name="deliveryMethod"]:checked').value,
+            total_amount: document.getElementById('totalAmount').innerText,
+            order_date: new Date().toLocaleString(), // Order date and time
+            to_email: "creativewebexperts02@gmail.com" // Your email address
+        };
 
-            const templateParams = {
-                name: document.getElementById('name').value,
-                address: document.getElementById('address').value,
-                thana: document.getElementById('thana').value,
-                phone: document.getElementById('phone').value,
-                product_code: document.getElementById('productCode').value,
-                quantity: document.getElementById('quantity').value,
-                delivery_method: document.querySelector('input[name="deliveryMethod"]:checked').value,
-                total_amount: document.getElementById('totalAmount').innerText,
-                order_date: new Date().toLocaleString(), // Order date and time
-                to_email: "creativewebexperts02@gmail.com" // Your email address
-            };
+        // Send email with EmailJS
+        emailjs.send('service_9zc5hzt', 'template_rwv3v8n', templateParams)
+            .then(function(response) {
+                console.log('Email sent successfully!', response.status, response.text);
 
+                // Store the order details in session storage to pass to the invoice page
+                sessionStorage.setItem('invoiceData', JSON.stringify(templateParams));
 
-            // Send email with EmailJS
-            emailjs.send('service_9zc5hzt', 'template_rwv3v8n', templateParams)
-                .then(function(response) {
-                    console.log('Email sent successfully!', response.status, response.text);
+                // Redirect to the invoice page
+                window.location.href = 'invoice.html';
+            }, function(error) {
+                console.error('Failed to send email:', error);
+            });
+    });
+</script>
 
-                    // Store the order details in session storage to pass to the invoice page
-                    sessionStorage.setItem('invoiceData', JSON.stringify(templateParams));
-
-                    // Redirect to the invoice page
-                    window.location.href = 'invoice.html';
-                }, function(error) {
-                    console.error('Failed to send email:', error);
-                });
-        });
-    </script>
 
 </body>
 
