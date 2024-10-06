@@ -776,7 +776,6 @@
    
    <br>     
    
-   
    <head>
     <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
     <meta charset="UTF-8">
@@ -991,45 +990,42 @@
             const quantity = parseInt(document.getElementById('quantity').value) || 1;
             const deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked').value;
             const selectedOption = document.querySelector('#productCode option:checked');
-            const productPrice = parseInt(selectedOption.getAttribute('data-price')) || 0; // Product price
-            let deliveryCharge = deliveryMethod === 'inDhaka' ? 60 : 80; // Delivery charges
+            const productPrice = parseInt(selectedOption.getAttribute('data-price'));
+            const deliveryCharge = deliveryMethod === 'inDhaka' ? 60 : 80;
+            const total = productPrice * quantity + deliveryCharge;
 
-            // Calculate total amount
-            const totalAmount = (productPrice * quantity) + deliveryCharge;
-            document.getElementById('totalAmount').innerText = totalAmount + ' ৳';
+            document.getElementById('totalAmount').textContent = total + ' ৳';
         }
 
         function increment() {
             const quantityInput = document.getElementById('quantity');
             quantityInput.value = parseInt(quantityInput.value) + 1;
-            calculateTotal(); // Update total after increment
+            calculateTotal();
         }
 
         function decrement() {
             const quantityInput = document.getElementById('quantity');
-            if (parseInt(quantityInput.value) > 1) {
+            if (quantityInput.value > 1) {
                 quantityInput.value = parseInt(quantityInput.value) - 1;
-                calculateTotal(); // Update total after decrement
+                calculateTotal();
             }
         }
 
-        // Form submission
         document.getElementById('orderForm').addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent default form submission
 
             const formData = new FormData(this); // Create FormData object
-            // Send the form data to EmailJS
             emailjs.sendForm('service_9zc5hzt', 'template_oaqjkad', formData)
                 .then(function () {
                     document.getElementById('successMessage').style.display = 'block'; // Show success message
                     document.getElementById('orderForm').reset(); // Reset the form
+                    calculateTotal(); // Reset total after form reset
                 }, function (error) {
                     console.error('Failed to send order:', error);
                 });
         });
     </script>
 </body>
-
 
    
    
