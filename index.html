@@ -775,8 +775,8 @@
    
    
    
-   
-   <head>
+    
+<head>
     <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
     <style>
         body {
@@ -836,7 +836,7 @@
             border-radius: 5px;
             cursor: pointer;
             display: block;
-            margin: 20px auto 0;
+            margin: 20px auto 0; /* Added margin at the top */
             text-align: center;
         }
 
@@ -880,78 +880,109 @@
 </head>
 <body>
 
-<div class="checkout-form" id="cart">
-    <img src="Barakah_header_logo.png" alt="Product Image" style="display: block; margin: 0 auto; max-width: 25%; height: auto;">
 
-    <h2 style="text-align: center;">ডেলিভারি এড্রেস</h2>
 
-    <form id="orderForm">
-        <div class="form-row">
-            <div class="form-group">
-                <label for="name">Name*</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone*</label>
-                <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required pattern="[0-9]{11}" title="Phone number must be 11 digits">
-            </div>
-        </div>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label for="address">Address*</label>
-                <input type="text" id="address" name="address" placeholder="Enter your address" required>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group">
-                <label for="productCode">Product Code*</label>
-                <select id="productCode" name="productCode" required>
-                    <option value="701" data-price="790">প্রোডাক্ট কোড ৭০১ - (১ মিনিটে জিকির ও দোয়া) - 790 ৳</option>
-                    <option value="702" data-price="790">প্রোডাক্ট কোড ৭০২ - (আল্লাহু ও মোহাম্মদ (সঃ)) - 790 ৳</option>
-                    <option value="703" data-price="790">প্রোডাক্ট কোড ৭০৩ - (খানা কাবা ও হাদিসসমূহ) - 790 ৳</option>
-                    <option value="704" data-price="790">প্রোডাক্ট কোড ৭০৪ - (কাবা, মাদিনা ও আকসা) - 790 ৳</option>
-                    <option value="705" data-price="790">প্রোডাক্ট কোড ৭০৫ - (অ্যারাবিক টাইপোগ্রাফি) - 790 ৳</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="quantity">Quantity of Set*</label>
-                <input type="number" id="quantity" name="quantity" min="1" placeholder="Enter quantity" required>
-            </div>
-        </div>
-
-        <div class="delivery-methods">
-            <div class="form-group">
-                <label><b>Delivery Method</b></label>
-                <label for="inDhaka">
-                    <input type="radio" id="inDhaka" name="deliveryMethod" value="inDhaka" checked>
-                    ঢাকার ভিতরে  (Delivery Charge : 60 ৳)
-                </label>
-                <label for="outDhaka">
-                    <input type="radio" id="outDhaka" name="deliveryMethod" value="outDhaka">
-                    ঢাকার বাহিরে (Delivery Charge : 80 ৳)
-                </label>
-            </div>
-        </div>
-
-        <h4 style="text-align: center;">অনুগ্রহপূর্বক প্রোডাক্ট কোড দেখে অর্ডার কনফার্ম করুন</h4>
-
-        <div class="terms">
-            <p style="text-align: center; font-size: 9px; line-height: 1.5;">
-                Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.
-            </p>
-        </div>
-
-        <button type="submit" style="height: 55px; width: auto; font-size: 16px; background-color: #1c491e; color: white; border: none; border-radius: 5px; cursor: pointer;">
-            অর্ডার কনফার্ম করুন - <span class="total-amount" id="totalAmount">850 ৳</span>
-        </button>
-    </form>
-
-    <div id="successMessage" class="success-message">
-        <span>✅ Order placed successfully!</span>
-    </div>
+<div id="cart">
+    <!-- Your form or product details go here -->
+     
+    <form></form>
 </div>
+
+
+
+
+
+
+    <div class="checkout-form"  id="cart">
+        <img src="Barakah_header_logo.png" alt="Product Image" style="display: block; margin: 0 auto; max-width: 25%; height: auto;">
+
+        <h2 style="text-align: center;">ডেলিভারি এড্রেস</h2>
+
+        <form id="orderForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone*</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your number" required pattern="[0-9]{11}" title="Phone number must be 11 digits">
+                </div>
+ 
+            </div>
+
+
+
+
+
+
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="address">Address*</label>
+                    <input type="text" id="address" name="address" placeholder="Enter your full address" required>
+                </div>
+                
+ 
+            </div>
+
+
+
+
+
+ 
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="productCode">Product Code*</label>
+                    <select id="productCode" name="productCode" required>
+                        <option value="701" data-price="790">প্রোডাক্ট কোড ৭০১ - (১ মিনিটে জিকির ও দোয়া) - 790 ৳</option>
+                        <option value="702" data-price="790">প্রোডাক্ট কোড ৭০২ - (আল্লাহু ও মোহাম্মদ (সঃ)) - 790 ৳</option>
+                        <option value="703" data-price="790">প্রোডাক্ট কোড ৭০৩ - (খানা কাবা ও হাদিসসমূহ) - 790 ৳</option>
+                        <option value="704" data-price="790">প্রোডাক্ট কোড ৭০৪ - (কাবা, মাদিনা ও আকসা) - 790 ৳</option>
+                        <option value="705" data-price="790">প্রোডাক্ট কোড ৭০৫ - (অ্যারাবিক টাইপোগ্রাফি) - 790 ৳</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity of Set*</label>
+                    <input type="number" id="quantity" name="quantity" min="1" placeholder="Enter quantity" required>
+                </div>
+            </div>
+    
+
+
+            <div class="delivery-methods">
+                <div class="form-group">
+                    <label><b>Delivery Charge</b></label>
+                    <label for="inDhaka">
+                        <input type="radio" id="inDhaka" name="deliveryMethod" value="inDhaka" checked>
+                        ঢাকার ভিতরে (Delivery Charge : 60 ৳)
+                    </label>
+                    <label for="outDhaka">
+                        <input type="radio" id="outDhaka" name="deliveryMethod" value="outDhaka">
+                        ঢাকার বাহিরে (Delivery Charge : 80 ৳)
+                    </label>
+                </div>
+            </div>
+ 
+
+
+            <h4 style="text-align: center;">অনুগ্রহপূর্বক প্রোডাক্ট কোড দেখে অর্ডার কনফার্ম করুন</h4>
+
+            <div class="terms">
+            <p style="text-align: center; font-size: 9px; line-height: 1.5;">
+    Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.
+</p>
+</div>
+
+            <button type="submit">অর্ডার কনফার্ম করুন <span class="total-amount" id="totalAmount">- Total: 850 ৳</span></button>
+        </form>
+
+        <div id="successMessage" class="success-message">
+            <span>✅ Order placed successfully!</span>
+        </div>
+    </div>
 
     <!-- Include EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -1006,6 +1037,7 @@
                 });
         });
     </script>
+
 </body>
 
  
