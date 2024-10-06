@@ -775,7 +775,6 @@
    <br><br> 
    
    <br>     
-   
    <head>
     <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
     <meta charset="UTF-8">
@@ -839,7 +838,7 @@
             border-radius: 5px;
             cursor: pointer;
             display: block;
-            margin: 20px auto 0; /* Added margin at the top */
+            margin: 20px auto 0;
             text-align: center;
         }
 
@@ -878,23 +877,23 @@
         }
 
         .quantity-container {
-            text-align: center; /* Center content */
+            text-align: center;
         }
 
         .input-size {
-            width: 60px; /* Adjust width as needed */
-            height: 30px; /* Adjust height as needed */
-            margin-bottom: 5px; /* Space between input and buttons */
+            width: 60px;
+            height: 30px;
+            margin-bottom: 5px;
         }
 
         .button {
-            width: 30px; /* Width of buttons */
-            height: 30px; /* Height of buttons */
-            cursor: pointer; /* Pointer cursor for buttons */
-            border: 1px solid #ccc; /* Border style */
-            background-color: #f0f0f0; /* Background color */
-            text-align: center; /* Center text in button */
-            display: inline-block; /* Align buttons horizontally */
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            text-align: center;
+            display: inline-block;
         }
     </style>
 </head>
@@ -982,53 +981,59 @@
     <!-- Include EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
-        (function(){
+        (function () {
             emailjs.init("EI64LNuOhELsTFjbW"); // Your EmailJS public key
         })();
 
         function calculateTotal() {
             const quantity = parseInt(document.getElementById('quantity').value) || 1;
             const deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked').value;
-            const productPrice = 790;
-            let deliveryCharge = deliveryMethod === 'inDhaka' ? 60 : 80;
-            const totalAmount = (productPrice + deliveryCharge) * quantity;
-            document.getElementById('totalAmount').innerText = `Total: ${totalAmount} ৳`;
+            const selectedOption = document.querySelector('#productCode option:checked');
+            const productPrice = parseInt(selectedOption.getAttribute('data-price'));
+            const deliveryCharge = deliveryMethod === 'inDhaka' ? 60 : 80;
+            const total = productPrice * quantity + deliveryCharge;
+
+            document.getElementById('totalAmount').textContent = total + ' ৳';
         }
 
-        document.getElementById('quantity').addEventListener('input', calculateTotal);
-        document.querySelectorAll('input[name="deliveryMethod"]').forEach(input => {
-            input.addEventListener('change', calculateTotal);
-        });
+        function increment() {
+            const quantityInput = document.getElementById('quantity');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+            calculateTotal();
+        }
 
-        document.getElementById('orderForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+        function decrement() {
+            const quantityInput = document.getElementById('quantity');
+            if (parseInt(quantityInput.value) > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+                calculateTotal();
+            }
+        }
 
-            const templateParams = {
+        document.getElementById("orderForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            const formData = {
                 name: document.getElementById('name').value,
-                address: document.getElementById('address').value,
-                thana: document.getElementById('thana').value,
                 phone: document.getElementById('phone').value,
-                product_code: document.getElementById('productCode').value,
+                address: document.getElementById('address').value,
+                productCode: document.getElementById('productCode').value,
                 quantity: document.getElementById('quantity').value,
-                delivery_method: document.querySelector('input[name="deliveryMethod"]:checked').value,
-                total_amount: document.getElementById('totalAmount').innerText,
-                order_date: new Date().toLocaleString(), // Order date and time
-                to_email: "creativewebexperts02@gmail.com" // Your email address
+                deliveryMethod: document.querySelector('input[name="deliveryMethod"]:checked').value,
+                totalAmount: document.getElementById('totalAmount').textContent,
             };
 
-
-            // Send email with EmailJS
-            emailjs.send('service_9zc5hzt', 'template_rwv3v8n', templateParams)
-                .then(function(response) {
-                    console.log('Email sent successfully!', response.status, response.text);
-
-                    // Store the order details in session storage to pass to the invoice page
-                    sessionStorage.setItem('invoiceData', JSON.stringify(templateParams));
-
-                    // Redirect to the invoice page
-                    window.location.href = 'invoice.html';
-                }, function(error) {
-                    console.error('Failed to send email:', error);
+            // Sending email using EmailJS
+            emailjs.send("service_9zc5hzt", "template_oaqjkad", formData)
+                .then(function (response) {
+                    console.log("Email sent successfully!", response.status, response.text);
+                    // Show success message and redirect
+                    document.getElementById("successMessage").style.display = "block";
+                    setTimeout(() => {
+                        window.location.href = "invoice.html"; // Redirect to invoice page
+                    }, 3000); // Redirect after 3 seconds
+                }, function (error) {
+                    console.error("Failed to send email:", error);
                 });
         });
     </script>
