@@ -785,8 +785,7 @@
 
    
    
-   
-<head>
+   <head>
     <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
     <style>
         body {
@@ -890,18 +889,6 @@
 </head>
 <body>
 
-
-
-
-<div id="cart">
-    <!-- Your form or product details go here -->
-     
-    <form></form>
-</div>
-
-
-
-
 <div class="checkout-form" id="cart">
     <img src="Barakah_header_logo.png" alt="Product Image" style="display: block; margin: 0 auto; max-width: 25%; height: auto;">
 
@@ -924,7 +911,6 @@
                 <label for="address">Address*</label>
                 <input type="text" id="address" name="address" placeholder="Enter your address" required>
             </div>
-            
         </div>
 
         <div class="form-row">
@@ -1007,7 +993,6 @@
         const templateParams = {
             name: document.getElementById('name').value,
             address: document.getElementById('address').value,
-            thana: document.getElementById('thana').value,
             phone: document.getElementById('phone').value,
             product_code: document.getElementById('productCode').value,
             quantity: document.getElementById('quantity').value,
@@ -1022,7 +1007,8 @@
             .then(function(response) {
                 console.log('Email sent successfully!', response.status, response.text);
 
-                // Store the order details in session storage to pass to the invoice page
+                // Store the order details
+ in session storage to pass to the invoice page
                 sessionStorage.setItem('invoiceData', JSON.stringify(templateParams));
 
                 // Redirect to the invoice page
