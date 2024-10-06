@@ -773,7 +773,55 @@
    
    <head>
        <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
+      
+      
+      
        <style>
+        .product-list {
+            max-width: 100%; /* Set to 100% for better mobile responsiveness */
+            margin: 20px auto;
+            padding: 10px; /* Reduced padding */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        button[type="submit"] {
+            font-size: 18px;
+            padding: 10px 20px; /* Adjust padding */
+            width: 100%; /* Full width for better mobile layout */
+            box-sizing: border-box; /* Include padding in the element's total width */
+        }
+    
+        /* Make sure the input fields are responsive */
+        input[type="text"], input[type="tel"], input[type="number"] {
+            width: 100%; /* Full width */
+            padding: 8px; /* Padding for better touch response */
+            margin: 5px 0; /* Margin for spacing */
+        }
+    
+        @media (max-width: 600px) {
+            .product-list {
+                padding: 10px; /* Reduce padding on mobile */
+            }
+    
+            button[type="submit"] {
+                font-size: 16px; /* Smaller font size on mobile */
+                padding: 10px; /* Adjust padding for mobile */
+            }
+    
+            /* Adjust input fields for mobile */
+            input[type="text"], input[type="tel"], input[type="number"] {
+                padding: 10px; /* Increase padding for touch devices */
+            }
+        }
+    
+        body {
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+    </style>
+    
+      <style>
            body {
                font-family: Arial, sans-serif;
            }
@@ -869,6 +917,17 @@
                margin-top: 20px;
            }
        </style>
+
+
+
+
+
+
+
+
+
+
+
        <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <title>Checkout Form</title>
