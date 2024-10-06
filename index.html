@@ -912,68 +912,26 @@
              <label for="address">Address*</label>
              <input type="text" id="address" name="address" placeholder="Enter your full address" required>
          </div>
-         <div class="form-group">
-             <label for="productCode">Product Code*</label>
-             <select id="productCode" name="productCode" required>
-                 <option value="701">Product 701 - (1 Minute Zikr & Hadith) - 790 ৳</option>
-                 <option value="702">Product 702 - (Allahu & Muhammad SAW) - 790 ৳</option>
-                 <option value="703">Product 703 - (Khana Kaba & 2 Ayaat) - 790 ৳</option>
-                 <option value="704">Product 704 - (Makka, Madina, Aksa) - 790 ৳</option>
-                 <option value="705">Product 705 - (Arabic Typography) - 790 ৳</option>
-             </select>
-         </div>
+          
+
+
+
+
      </div>
 
      <div class="form-row">
-         <style>
-             .input-size {
-                 width: 50px; /* Adjust width as needed */
-             }
-         </style>
+          
+            <div class="form-group">
+                <label for="productCode">Product Code*</label>
+                <select id="productCode" name="productCode" required>
+                    <option value="701">Product 701 - (1 Minute Zikr & Hadith) - 790 ৳</option>
+                    <option value="702">Product 702 - (Allahu & Muhammad SAW) - 790 ৳</option>
+                    <option value="703">Product 703 - (Khana Kaba & 2 Ayaat) - 790 ৳</option>
+                    <option value="704">Product 704 - (Makka, Madina, Aksa) - 790 ৳</option>
+                    <option value="705">Product 705 - (Arabic Typography) - 790 ৳</option>
+                </select>
+            </div>
          
-         <div class="form-group">
-             <style>
-                 .form-group {
-                     display: flex;
-                     align-items: center;
-                 }
-                 .input-size {
-                     width: 60px; /* Adjust width as needed */
-                     height: 30px; /* Adjust height as needed */
-                     margin-right: 10px; /* Space between input and buttons */
-                 }
-                 .button {
-                     width: 30px; /* Width of buttons */
-                     height: 30px; /* Height of buttons */
-                     cursor: pointer; /* Pointer cursor for buttons */
-                     border: 1px solid #ccc; /* Border style */
-                     background-color: #f0f0f0; /* Background color */
-                     text-align: center; /* Center text in button */
-                 }
-             </style>
-             <body>
-                 <div class="form-group">
-                     <label for="quantity">Quantity of Set*</label>
-                     <input type="number" id="quantity" name="quantity" min="1" value="1" placeholder="Enter quantity" required class="input-size">
-                     <div class="button" onclick="decrement()">-</div>
-                     <div class="button" onclick="increment()">+</div>
-                 </div>
-             
-                 <script>
-                     function increment() {
-                         var quantityInput = document.getElementById('quantity');
-                         quantityInput.value = parseInt(quantityInput.value) + 1;
-                     }
-             
-                     function decrement() {
-                         var quantityInput = document.getElementById('quantity');
-                         if (quantityInput.value > 1) {
-                             quantityInput.value = parseInt(quantityInput.value) - 1;
-                         }
-                     }
-                 </script>
-             </body>
-         </div>
          
      </div>
 
