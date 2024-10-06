@@ -774,8 +774,7 @@
    
    <br><br> 
    
-   <br>     
-   <head>
+   <br>     <head>
     <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -838,7 +837,7 @@
             border-radius: 5px;
             cursor: pointer;
             display: block;
-            margin: 20px auto 0;
+            margin: 20px auto 0; /* Added margin at the top */
             text-align: center;
         }
 
@@ -877,23 +876,23 @@
         }
 
         .quantity-container {
-            text-align: center;
+            text-align: center; /* Center content */
         }
 
         .input-size {
-            width: 60px;
-            height: 30px;
-            margin-bottom: 5px;
+            width: 60px; /* Adjust width as needed */
+            height: 30px; /* Adjust height as needed */
+            margin-bottom: 5px; /* Space between input and buttons */
         }
 
         .button {
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            border: 1px solid #ccc;
-            background-color: #f0f0f0;
-            text-align: center;
-            display: inline-block;
+            width: 30px; /* Width of buttons */
+            height: 30px; /* Height of buttons */
+            cursor: pointer; /* Pointer cursor for buttons */
+            border: 1px solid #ccc; /* Border style */
+            background-color: #f0f0f0; /* Background color */
+            text-align: center; /* Center text in button */
+            display: inline-block; /* Align buttons horizontally */
         }
     </style>
 </head>
@@ -993,7 +992,7 @@
             const deliveryCharge = deliveryMethod === 'inDhaka' ? 60 : 80;
             const total = productPrice * quantity + deliveryCharge;
 
-            document.getElementById('totalAmount').textContent = total + ' ৳';
+            document.getElementById('totalAmount').innerText = total + ' ৳';
         }
 
         function increment() {
@@ -1010,34 +1009,46 @@
             }
         }
 
-        document.getElementById("orderForm").addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent form submission
+        document.getElementById('orderForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
 
-            const formData = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                address: document.getElementById('address').value,
-                productCode: document.getElementById('productCode').value,
-                quantity: document.getElementById('quantity').value,
-                deliveryMethod: document.querySelector('input[name="deliveryMethod"]:checked').value,
-                totalAmount: document.getElementById('totalAmount').textContent,
+            // Prepare the data for EmailJS
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const productCode = document.getElementById('productCode').value;
+            const quantity = document.getElementById('quantity').value;
+            const deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked').value;
+            const totalAmount = document.getElementById('totalAmount').innerText;
+
+            const templateParams = {
+                name: name,
+                phone: phone,
+                address: address,
+                productCode: productCode,
+                quantity: quantity,
+                deliveryMethod: deliveryMethod,
+                totalAmount: totalAmount
             };
 
-            // Sending email using EmailJS
-            emailjs.send("service_9zc5hzt", "template_oaqjkad", formData)
+            // Send the email using EmailJS
+            emailjs.send('service_9zc5hzt', 'template_oaqjkad', templateParams)
                 .then(function (response) {
-                    console.log("Email sent successfully!", response.status, response.text);
-                    // Show success message and redirect
-                    document.getElementById("successMessage").style.display = "block";
-                    setTimeout(() => {
-                        window.location.href = "invoice.html"; // Redirect to invoice page
-                    }, 3000); // Redirect after 3 seconds
+                    console.log('SUCCESS!', response.status, response.text);
+                    // Show success message
+                    document.getElementById('successMessage').style.display = 'block';
+
+                    // Redirect to invoice.html after 3 seconds
+                    setTimeout(function () {
+                        window.location.href = 'invoice.html';
+                    }, 3000);
                 }, function (error) {
-                    console.error("Failed to send email:", error);
+                    console.log('FAILED...', error);
                 });
         });
     </script>
 </body>
+
 
    
    
