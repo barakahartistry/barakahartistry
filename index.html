@@ -774,7 +774,7 @@
    
    <br><br> 
    
-   <br>     <head>
+   <br>    <head>
     <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -984,35 +984,35 @@
             emailjs.init("EI64LNuOhELsTFjbW"); // Your EmailJS public key
         })();
 
-        function calculateTotal() {
-            const quantity = parseInt(document.getElementById('quantity').value) || 1;
-            const deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked').value;
-            const selectedOption = document.querySelector('#productCode option:checked');
-            const productPrice = parseInt(selectedOption.getAttribute('data-price'));
-            const deliveryCharge = deliveryMethod === 'inDhaka' ? 60 : 80;
-            const total = productPrice * quantity + deliveryCharge;
-
-            document.getElementById('totalAmount').innerText = total + ' ৳';
-        }
-
         function increment() {
-            const quantityInput = document.getElementById('quantity');
-            quantityInput.value = parseInt(quantityInput.value) + 1;
+            var quantity = document.getElementById('quantity');
+            quantity.value = parseInt(quantity.value) + 1;
             calculateTotal();
         }
 
         function decrement() {
-            const quantityInput = document.getElementById('quantity');
-            if (parseInt(quantityInput.value) > 1) {
-                quantityInput.value = parseInt(quantityInput.value) - 1;
+            var quantity = document.getElementById('quantity');
+            if (parseInt(quantity.value) > 1) {
+                quantity.value = parseInt(quantity.value) - 1;
                 calculateTotal();
             }
         }
 
-        document.getElementById('orderForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent default form submission
+        function calculateTotal() {
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const productSelect = document.getElementById('productCode');
+            const selectedOption = productSelect.options[productSelect.selectedIndex];
+            const price = parseInt(selectedOption.getAttribute('data-price'));
+            const deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked').value;
+            const deliveryCharge = deliveryMethod === 'inDhaka' ? 60 : 80;
+            const total = (price * quantity) + deliveryCharge;
 
-            // Prepare the data for EmailJS
+            document.getElementById('totalAmount').innerText = total + " ৳";
+        }
+
+        document.getElementById("orderForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const address = document.getElementById('address').value;
@@ -1021,33 +1021,30 @@
             const deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked').value;
             const totalAmount = document.getElementById('totalAmount').innerText;
 
-            const templateParams = {
+            // Send the email
+            emailjs.send("service_9zc5hzt", "template_oaqjkad", {
                 name: name,
                 phone: phone,
                 address: address,
                 productCode: productCode,
                 quantity: quantity,
                 deliveryMethod: deliveryMethod,
-                totalAmount: totalAmount
-            };
-
-            // Send the email using EmailJS
-            emailjs.send('service_9zc5hzt', 'template_oaqjkad', templateParams)
-                .then(function (response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    // Show success message
-                    document.getElementById('successMessage').style.display = 'block';
-
-                    // Redirect to invoice.html after 3 seconds
-                    setTimeout(function () {
-                        window.location.href = 'invoice.html';
-                    }, 3000);
-                }, function (error) {
-                    console.log('FAILED...', error);
-                });
+                totalAmount: totalAmount,
+            })
+            .then(function (response) {
+                console.log("SUCCESS!", response.status, response.text);
+                // Display success message
+                document.getElementById('successMessage').style.display = 'block';
+                // Reset the form
+                document.getElementById("orderForm").reset();
+                calculateTotal(); // Reset total to initial state
+            }, function (error) {
+                console.log("FAILED...", error);
+            });
         });
     </script>
 </body>
+
 
 
    
