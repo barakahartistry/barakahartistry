@@ -932,11 +932,47 @@
          </style>
          
          <div class="form-group">
-           
+             <style>
+                 .form-group {
+                     display: flex;
+                     align-items: center;
+                 }
+                 .input-size {
+                     width: 60px; /* Adjust width as needed */
+                     height: 30px; /* Adjust height as needed */
+                     margin-right: 10px; /* Space between input and buttons */
+                 }
+                 .button {
+                     width: 30px; /* Width of buttons */
+                     height: 30px; /* Height of buttons */
+                     cursor: pointer; /* Pointer cursor for buttons */
+                     border: 1px solid #ccc; /* Border style */
+                     background-color: #f0f0f0; /* Background color */
+                     text-align: center; /* Center text in button */
+                 }
+             </style>
+             <body>
                  <div class="form-group">
                      <label for="quantity">Quantity of Set*</label>
                      <input type="number" id="quantity" name="quantity" min="1" value="1" placeholder="Enter quantity" required class="input-size">
-                   
+                     <div class="button" onclick="decrement()">-</div>
+                     <div class="button" onclick="increment()">+</div>
+                 </div>
+             
+                 <script>
+                     function increment() {
+                         var quantityInput = document.getElementById('quantity');
+                         quantityInput.value = parseInt(quantityInput.value) + 1;
+                     }
+             
+                     function decrement() {
+                         var quantityInput = document.getElementById('quantity');
+                         if (quantityInput.value > 1) {
+                             quantityInput.value = parseInt(quantityInput.value) - 1;
+                         }
+                     }
+                 </script>
+             </body>
          </div>
          
      </div>
